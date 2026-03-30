@@ -32,10 +32,10 @@ cp "$SRC/learning/regression_guard.py"   "$DST/learning/regression_guard.py"
 cp "$SRC/learning/journal_learner.py"    "$DST/learning/journal_learner.py"
 echo "[OK] learning/"
 
-# 문서 (ROADMAP.md는 paper-to-md가 원본이므로 제외)
-# DEVELOPMENT.md는 양쪽 모두 편집될 수 있으므로 주의
-# cp "$SRC/DEVELOPMENT.md" "$DST/DEVELOPMENT.md"
-echo "[SKIP] DEVELOPMENT.md — 수동으로 병합할 것"
+# 문서: DEVELOPMENT.md와 ROADMAP.md는 paper-to-md가 원본
+# Obsidian/scripts의 것을 paper-to-md로 덮어쓰지 않음
+# (Claude Code가 요청 시 병합 처리)
+echo "[SKIP] DEVELOPMENT.md, ROADMAP.md — paper-to-md가 원본 (Claude가 병합)"
 
 echo ""
 echo "[sync] 완료! 변경사항 확인 후 git commit/push 하세요."
