@@ -6,12 +6,11 @@ __pycache__/
 *.pyc
 *.pyo
 
-# 벤치마크 PDF (용량)
-benchmark/**/*.pdf
-benchmark/**/*_assets/
+# 벤치마크 (로컬 전용)
+benchmark/
 
-# 학습 로그 (선택적 추적)
-learning_data/corrections_log.jsonl
+# 학습 데이터 (로컬 전용)
+learning_data/
 
 # 진단 로그
 *.log
