@@ -915,7 +915,12 @@ def _extract_paper_metadata(md: str) -> dict:
             meta["title"] = stripped[3:].strip()
             break
 
-    # ── 저자줄: 제목 다음 첫 비어있지 않은 줄
+    # ── 저자줄: 제목 다음 첫 비어있지 않은 줄 (투고일/수락일/노이즈 건너뜀)
+    _SKIP_LINE_PAT = re.compile(
+        r'^(Received|Accepted|Revised|Published|Check\s+for\s+updates?'
+        r'|\d{10,}|https?://|npj|Nature\s+Commun)',
+        re.IGNORECASE
+    )
     author_line = ""
     found_title = False
     for line in lines:
@@ -925,6 +930,8 @@ def _extract_paper_metadata(md: str) -> dict:
                 found_title = True
             continue
         if stripped:
+            if _SKIP_LINE_PAT.match(stripped):
+                continue  # 투고일/수락일/노이즈 건너뜀
             author_line = stripped
             break
 
@@ -933,6 +940,10 @@ def _extract_paper_metadata(md: str) -> dict:
         # "Name,*" → "Name*," 정규화 (콤마 뒤에 마커가 오는 경우)
         clean = re.sub(r'(\w),\s*([*✉†]+)', r'\1\2,', author_line)
         clean = re.sub(r'\s+\d+(?:,\d+)*\b', '', clean)   # 소속번호 제거 "1,7"
+        # ORCID/수식 심볼 제거 ($\oplus...$, $\bigcirc$ 등)
+        clean = re.sub(r'\s*\$[^$]+\$\s*', ' ', clean)
+        # & → , 변환 (NatCommun 마지막 저자 구분자)
+        clean = clean.replace(' & ', ', ')
         parts = re.split(r',\s*|\s+and\s+', clean)
         authors = []
         corresponding = []
@@ -988,6 +999,13 @@ def _extract_paper_metadata(md: str) -> dict:
             em = _EMAIL_PAT.search(para)
             if em and not email_found:
                 email_found = em.group(0)
+            continue
+        # NatCommun 노이즈 패턴 제외 (1234567890():,;, Received/Accepted 단독줄)
+        _AFFIL_NOISE_PAT = re.compile(
+            r'^(\d{10,}|Received[:\s]|Accepted[:\s]|Revised[:\s]|Check\s+for\s+updates?)',
+            re.IGNORECASE
+        )
+        if _AFFIL_NOISE_PAT.match(para):
             continue
         # 소속 감지: 기관명 키워드 OR 이메일 OR 짧은 단락(<200자, 헤더존 내)
         is_affil = (

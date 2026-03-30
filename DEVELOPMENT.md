@@ -222,9 +222,12 @@ scripts/
 ### v9.1 — 테스트셋 확장 + 신규 포맷 수정
 - [x] ACS 논문 벤치마크 (E1 완료)
 - [x] npj 2D Materials 벤치마크 (F1, F2 완료)
+- [x] Nature Communications 벤치마크 (G1 완료, 24.3s, ~83/100)
+- [x] `fi`/`fl` 공백 분리 리가처 postprocess 처리 (NatCommun, npj 공통)
+- [x] YAML 저자 오인식 수정 (Received/Accepted 건너뜀, & 분리, ORCID 심볼 제거)
+- [x] NatCommun 헤더 노이즈 필터 (`1234567890():,;`)
 - [ ] ACS 참고문헌 `(N)` 스타일 파서 추가
-- [ ] npj `fi`/`fl` 리가처 postprocess 처리
-- [ ] YAML 저자 블록 감지 로직 강화
+- [ ] NatCommun affiliation 본문 중간 위치 파서
 - [ ] Marker 1.10 `--use_llm` 비교 벤치마크
 - [ ] MinerU 2.7 hybrid 백엔드 교체 평가
 - [ ] MonkeyOCR / FireRed-OCR 벤치마크

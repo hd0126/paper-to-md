@@ -73,6 +73,12 @@ def _fix_text_encoding(md: str) -> str:
     # Known corrupted symbol patterns
     for corrupted, fixed in _KNOWN_CORRUPTIONS.items():
         md = md.replace(corrupted, fixed)
+    # 공백 분리 리가처 복원 (NatCommun, npj 등: "fi lm" → "film", "fl ex" → "flex")
+    # 단어 중간에 "fi " 또는 "fl "이 있는 경우만 처리 (문장 시작/끝 제외)
+    md = re.sub(r'(?<=[a-z])\s+fi\s+(?=[a-z])', 'fi', md)
+    md = re.sub(r'(?<=[a-z])\s+fl\s+(?=[a-z])', 'fl', md)
+    md = re.sub(r'\bfi\s+(?=[a-z]{2,})', 'fi', md)
+    md = re.sub(r'\bfl\s+(?=[a-z]{2,})', 'fl', md)
     return md
 
 
@@ -119,6 +125,8 @@ def _remove_publisher_watermarks(md: str) -> str:
     md = re.sub(r'^\s*©\s*\d{4}\s+The\s+Author[^\n]*\n?',
                 '', md, flags=re.MULTILINE | re.IGNORECASE)
     md = re.sub(r'^Copyright\s*©\s*\d{4}[^\n]*\n', '', md, flags=re.MULTILINE | re.IGNORECASE)
+    # Nature Communications 헤더 노이즈 제거 (1234567890():,; 패턴)
+    md = re.sub(r'^1234567890\(\):,;\s*$', '', md, flags=re.MULTILINE)
     # Science Advances / AAAS 저널 보일러플레이트 제거 (단독 줄, bold/italic 포함)
     md = re.sub(r'^Science\s+Advances\s*$', '', md, flags=re.MULTILINE | re.IGNORECASE)
     md = re.sub(r'^_Science\s+Advances_[^\n]*$', '', md, flags=re.MULTILINE | re.IGNORECASE)
