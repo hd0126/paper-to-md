@@ -1,0 +1,21 @@
+# 가상환경
+envs/
+
+# 캐시
+__pycache__/
+*.pyc
+*.pyo
+
+# 벤치마크 PDF (용량)
+benchmark/**/*.pdf
+benchmark/**/*_assets/
+
+# 학습 로그 (선택적 추적)
+learning_data/corrections_log.jsonl
+
+# 진단 로그
+*.log
+diagnose*.log
+
+# 임시 파일
+*.tmp

@@ -1,0 +1,103 @@
+{
+  "_version": "1.0",
+  "_last_updated": "2026-03-05",
+  "_description": "논문 분류 체계. run_paper_hybrid.py 실행 시 자동 분류 후 사용자가 수정 보완.",
+
+  "major_categories": [
+    "Display",
+    "Energy",
+    "Biomedical",
+    "Electronics",
+    "Sensors",
+    "Robotics",
+    "Materials",
+    "Manufacturing"
+  ],
+
+  "middle_categories": {
+    "Display":       ["Stretchable", "Flexible", "Micro-LED", "OLED", "LCD", "Transparent", "Quantum Dot", "Wearable"],
+    "Energy":        ["Battery", "Supercapacitor", "Solar Cell", "Thermoelectric", "Triboelectric", "Piezoelectric", "Fuel Cell"],
+    "Biomedical":    ["E-skin", "Neural Interface", "Drug Delivery", "Implant", "Biosensor", "Imaging", "Wearable Health"],
+    "Electronics":   ["Semiconductor", "Interconnect", "Packaging", "Circuit", "Memory", "Logic"],
+    "Sensors":       ["Pressure", "Strain", "Chemical", "Optical", "Thermal", "Bio", "Motion"],
+    "Robotics":      ["Soft Robotics", "MEMS", "Actuator", "Gripper", "Haptic"],
+    "Materials":     ["2D Materials", "Nanomaterials", "Polymer", "Composite", "Metal", "Ceramic", "Liquid Metal"],
+    "Manufacturing": ["Printing", "Lithography", "Transfer", "Assembly", "Coating", "Patterning"]
+  },
+
+  "minor_categories": [
+    "소재",
+    "공정",
+    "소자",
+    "장비/시스템",
+    "기술/방법",
+    "분석/측정",
+    "이론/시뮬레이션"
+  ],
+
+  "_minor_guide": {
+    "소재":           "신소재 개발 중심 (elastomer, liquid metal, PDMS, composite 등)",
+    "공정":           "제조/가공 공정 개발 (printing, etching, transfer, coating 등)",
+    "소자":           "소자/부품 설계·구현 (display, sensor, LED, transistor 등)",
+    "장비/시스템":    "장비·설비·시스템 개발 (roll-to-plate, equipment, setup 등)",
+    "기술/방법":      "신기술/방법론 제안 (alignment, bonding, integration 기술 등)",
+    "분석/측정":      "분석·측정·특성평가 중심 (XPS, SEM, AFM, spectroscopy 등)",
+    "이론/시뮬레이션":"FEM, DFT, first-principles, 이론 모델링 중심"
+  },
+
+  "auto_classify_keywords": {
+    "Display": {
+      "Stretchable":  ["stretchable display", "meta-elastomer", "poisson", "auxetic", "zero poisson", "stretchable substrate", "stretchable electrode", "stretchable"],
+      "Micro-LED":    ["micro-LED", "micro-led", "microLED", "micro led", "roll transfer", "mass transfer", "R2P", "roll-to-plate"],
+      "OLED":         ["OLED", "organic LED", "organic light-emitting"],
+      "Transparent":  ["transparent display", "transparent circuit", "TCB", "transparent"],
+      "Flexible":     ["flexible display", "flexible substrate", "foldable", "rollable"],
+      "Quantum Dot":  ["quantum dot", "QD-LED", "QLED"]
+    },
+    "Electronics": {
+      "Interconnect": ["liquid metal", "stretchable electrode", "conductive ink", "circuit line", "interconnect", "printed circuit"],
+      "Semiconductor":["semiconductor", "transistor", "MOSFET", "diode", "FET"],
+      "Memory":       ["memory", "RRAM", "flash", "DRAM"],
+      "Packaging":    ["packaging", "encapsulation", "hermetic"]
+    },
+    "Sensors": {
+      "Strain":       ["strain sensor", "piezoresistive", "strain gauge", "electromechanical"],
+      "Pressure":     ["pressure sensor", "tactile sensor", "capacitive"],
+      "Chemical":     ["chemical sensor", "gas sensor", "electrochemical"],
+      "Bio":          ["biosensor", "glucose", "sweat sensor", "ion sensor"]
+    },
+    "Energy": {
+      "Triboelectric":["triboelectric", "TENG", "friction"],
+      "Piezoelectric":["piezoelectric", "PVDF", "BaTiO3"],
+      "Battery":      ["battery", "lithium", "anode", "cathode", "electrolyte"],
+      "Supercapacitor":["supercapacitor", "capacitor", "EDLC"]
+    },
+    "Biomedical": {
+      "E-skin":       ["electronic skin", "e-skin", "artificial skin", "prosthetic"],
+      "Neural Interface":["neural", "brain", "cortex", "implant"],
+      "Wearable Health":["wearable", "health monitoring", "ECG", "EMG", "PPG"]
+    },
+    "Materials": {
+      "Liquid Metal":  ["liquid metal", "gallium", "EGaIn", "galinstan"],
+      "2D Materials":  ["graphene", "MoS2", "TMD", "2D material"],
+      "Polymer":       ["polymer", "PDMS", "hydrogel", "elastomer"]
+    },
+    "Manufacturing": {
+      "Transfer":     ["transfer process", "roll transfer", "stamp transfer", "pick-and-place"],
+      "Printing":     ["printing", "inkjet", "screen print", "direct ink"],
+      "Patterning":   ["patterning", "photolithography", "soft lithography"]
+    }
+  },
+
+  "auto_classify_minor": {
+    "소재":           ["material", "elastomer", "polymer", "composite", "alloy", "liquid metal", "PDMS", "substrate", "oxide skin", "hydrogel", "film"],
+    "공정":           ["fabrication", "process", "printing", "lithography", "transfer", "coating", "deposition", "etching", "sintering", "annealing"],
+    "소자":           ["device", "display", "sensor", "actuator", "LED", "transistor", "electrode", "battery", "capacitor"],
+    "장비/시스템":    ["equipment", "system", "setup", "roll-to-plate", "machine", "apparatus", "tool", "instrument"],
+    "기술/방법":      ["method", "technique", "approach", "strategy", "alignment", "bonding", "integration", "assembly"],
+    "분석/측정":      ["characterization", "measurement", "spectroscopy", "XPS", "SEM", "TEM", "AFM", "analysis", "APT"],
+    "이론/시뮬레이션":["simulation", "FEM", "DFT", "first-principles", "modeling", "theory", "calculation", "numerical"]
+  },
+
+  "processed_papers": {}
+}

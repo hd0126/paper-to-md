@@ -1,0 +1,658 @@
+{
+  "_comment": "Docling Hybrid 파이프라인 객관적 벤치마크 Ground Truth (2026-02-26)",
+  "_version": "1.0",
+
+  "papers": {
+    "A1_Adv_Funct_Mater_2024_Zero_Poisson": {
+      "display_name": "A1 (Adv. Funct. Mater. 2024)",
+      "n_pages": 14,
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "서브패널 제거 후 실제 Figure 수 (실측 검증)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음 (Supporting Information에만 일부 있으나 본문 제외)"
+      },
+
+      "formulas": {
+        "mfd_inline":              343,
+        "mfd_inline_conf05":       291,
+        "mfd_inline_insertable":   218,
+        "mfd_display":               5,
+        "_note": "mfd_inline: 전체 감지 수 | mfd_inline_conf05: conf≥0.5 필터 후 | mfd_inline_insertable: Figure 내부(51개)+보일러플레이트(8개)+단일ASCII(14개) 제외 — 실제 삽입 가능한 최대치 (진단 2026-02-26)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Results", "Conclusion", "Experimental"],
+        "min_h2_count": 8,
+        "_note": "Abstract는 별도 헤딩 없이 본문 시작 가능"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE NEWS",
+          "^www\\.advancedsciencenews\\.com$",
+          "^www\\.advmat\\.de$",
+          "^www\\.afm-journal\\.de$",
+          "^Adv\\. Funct\\. Mater\\.",
+          "^© 20\\d{2}"
+        ],
+        "_note": "각 패턴은 regex. ^ = 줄 시작. 발견 시 -1점/개 (최대 -5점)"
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "각 Figure에 캡션이 바로 다음에 위치해야 함"
+      }
+    },
+
+    "C1_Nature_Electronics_2024_S-ACF": {
+      "display_name": "C1 (Nature Electronics 2024)",
+      "n_pages": 15,
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "Extended Data Fig 제외, 본문 Fig 1-5"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음. pymupdf4llm이 Figure 내부 라벨(Col1/Col2)을 표로 오인식"
+      },
+
+      "formulas": {
+        "mfd_inline":              255,
+        "mfd_inline_conf05":       215,
+        "mfd_inline_insertable":   207,
+        "mfd_display":               9,
+        "_note": "Phase-field/Cahn-Hilliard 수식 9개 포함 | mfd_inline_insertable: Figure 내부(2개)+단일ASCII(6개) 제외 (진단 2026-02-26)"
+      },
+
+      "structure": {
+        "required_headings": ["Methods", "Conclusions"],
+        "min_h2_count": 6,
+        "_note": "Nature 저널은 Abstract/Intro 별도 헤딩 없는 경우 많음. Results 섹션 없음 — 주제별 소제목으로 결과 기술 (S-ACI, Velocity-controlled 등)"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "^nature electronics$",
+          "^nature materials$",
+          "^nature$",
+          "^Article$",
+          "^Research Article$",
+          "View the article online",
+          "^© 20\\d{2}"
+        ],
+        "_note": "www.nature.com은 Reference 내 정상 URL일 수 있어 제외"
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "Extended Data는 별도 섹션이므로 제외"
+      }
+    },
+
+    "C2_Science_Advances_2021_S-ACF_origin": {
+      "display_name": "C2 (Science Advances 2021)",
+      "n_pages": 11,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음"
+      },
+
+      "figures": {
+        "expected_count": 6,
+        "_note": "Fig 1-6 모두 단일 패널"
+      },
+
+      "formulas": {
+        "mfd_inline":              274,
+        "mfd_inline_conf05":       224,
+        "mfd_inline_insertable":   200,
+        "mfd_display":               0,
+        "_note": "Science Advances 2-컬럼 레이아웃에서 display 수식이 inline으로 감지됨 | mfd_inline_insertable: Figure 내부(13개)+단일ASCII(11개) 제외 (진단 2026-02-26)"
+      },
+
+      "structure": {
+        "required_headings": ["INTRODUCTION", "MATERIALS AND METHODS"],
+        "min_h2_count": 5,
+        "_note": "Science Advances는 ALL-CAPS 헤딩 사용"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE ADVANCES",
+          "^R E S E A R C H",
+          "View the article online",
+          "^© 20\\d{2}",
+          "^Permissions$"
+        ],
+        "_note": "www.dexerials.jp 등 공급업체 URL은 Methods의 정상 인용이므로 제외"
+      },
+
+      "captions": {
+        "expected_count": 6,
+        "_note": "Fig 1-6 각각 캡션 존재"
+      }
+    },
+
+    "A2_Small_Structures_2025_Depth_Modulus": {
+      "display_name": "A2 (Small Structures 2025)",
+      "n_pages": 9,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음"
+      },
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "Docling 서브패널 필터 후 5개 저장 (실측 2026-03-04)"
+      },
+
+      "formulas": {
+        "mfd_inline":              158,
+        "mfd_inline_conf05":       130,
+        "mfd_inline_insertable":   123,
+        "mfd_display":               0,
+        "_note": "mfd_inline: MFD 전체 감지 | mfd_inline_conf05: conf≥0.5 필터 후 (JSON 기준) | mfd_inline_insertable: single_ascii(7개) 제외 (실측 2026-03-04)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Results and Discussion", "Conclusion", "Experimental Section"],
+        "min_h2_count": 8,
+        "_note": "Small Structures (Wiley) 번호 붙은 섹션 구조. 2.1~2.4 소제목 포함 총 14개 h2"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE NEWS",
+          "^www\\.small-structures\\.com$",
+          "^www\\.advancedsciencenews\\.com$",
+          "^© 20\\d{2}"
+        ],
+        "_note": "실측 결과 forbidden pattern 없음 (2026-03-04)"
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "Fig 1-5 각각 캡션 존재 (실측 2026-03-04)"
+      }
+    },
+
+    "A3_Adv_Mater_2025_Transparent_Stretchable": {
+      "display_name": "A3 (Adv. Mater. 2025)",
+      "n_pages": 10,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음"
+      },
+
+      "figures": {
+        "expected_count": 6,
+        "_note": "Docling 서브패널 필터 후 6개 저장 (실측 2026-03-04)"
+      },
+
+      "formulas": {
+        "mfd_inline":              231,
+        "mfd_inline_conf05":       182,
+        "mfd_inline_insertable":   178,
+        "mfd_display":               0,
+        "_note": "mfd_inline_insertable: single_ascii(4개) 제외 (실측 2026-03-04)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Conclusion", "Experimental Section"],
+        "min_h2_count": 5,
+        "_note": "Adv. Mater. (Wiley) — Results/Discussion 헤딩 없음, Introduction 후 결과 내용 직접 기술 후 Conclusion으로 이동"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE NEWS",
+          "^www\\.advmat\\.de$",
+          "^www\\.advancedsciencenews\\.com$",
+          "^© 20\\d{2}"
+        ],
+        "_note": "실측 결과 forbidden pattern 없음 (2026-03-04)"
+      },
+
+      "captions": {
+        "expected_count": 6,
+        "_note": "Fig 1-6 각각 캡션 존재 (실측 2026-03-04)"
+      }
+    },
+
+    "B1_Nature_Materials_2021_LM": {
+      "display_name": "B1 (Nature Materials 2021)",
+      "n_pages": 9,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음. pymupdf4llm이 Figure 내부 라벨을 표로 오인식"
+      },
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "Docling 서브패널 필터 후 5개 저장 (실측 2026-03-04)"
+      },
+
+      "formulas": {
+        "mfd_inline":              219,
+        "mfd_inline_conf05":       187,
+        "mfd_inline_insertable":   178,
+        "mfd_display":               0,
+        "_note": "mfd_inline_insertable: single_ascii(9개) 제외 (실측 2026-03-04)"
+      },
+
+      "structure": {
+        "required_headings": ["Methods"],
+        "min_h2_count": 5,
+        "_note": "Nature Materials — 본문 섹션 헤딩 없음, Methods가 유일한 필수 헤딩. 총 h2 11개 (boilerplate 포함)"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "^nature materials$",
+          "^ARTICLES$",
+          "^Online content$",
+          "^© 20\\d{2}"
+        ],
+        "_note": "실측 결과 forbidden pattern 없음 (2026-03-04)"
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "Fig 1-5 각각 캡션 존재 (실측 2026-03-04)"
+      }
+    },
+
+    "B2_Science_Advances_2025_LM_patterning": {
+      "display_name": "B2 (Science Advances 2025)",
+      "n_pages": 14,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음"
+      },
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "Docling 서브패널 필터 후 5개 저장 (실측 2026-03-04)"
+      },
+
+      "formulas": {
+        "mfd_inline":              163,
+        "mfd_inline_conf05":       138,
+        "mfd_inline_insertable":   137,
+        "mfd_display":               0,
+        "_note": "mfd_inline_insertable: single_ascii(1개) 제외 (실측 2026-03-04)"
+      },
+
+      "structure": {
+        "required_headings": ["INTRODUCTION", "RESULTS", "DISCUSSION", "MATERIALS AND METHODS"],
+        "min_h2_count": 8,
+        "_note": "Science Advances ALL-CAPS 헤딩 구조. 총 28개 h2 (Methods 소섹션 다수 포함)"
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE ADVANCES",
+          "^S c i e n c e",
+          "View the article online",
+          "^© 20\\d{2}",
+          "^Permissions$"
+        ],
+        "_note": "실측: 'S c i e n c e A d vA n c e S | R e S e A R c h A R t i c L e' 2회 잔류 (2026-03-04)"
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "Fig 1-5 각각 캡션 존재 (실측 2026-03-04)"
+      }
+    },
+
+    "D1_Adv_Electron_Mater_2024_R2P": {
+      "display_name": "D1 (Adv. Electron. Mater. 2024)",
+      "n_pages": 12,
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "실제 데이터 표 없음"
+      },
+
+      "figures": {
+        "expected_count": 6,
+        "_note": "Fig 1-6 실측 확인 (2026-03-05)"
+      },
+
+      "formulas": {
+        "mfd_inline":              0,
+        "mfd_inline_conf05":       0,
+        "mfd_inline_insertable":   0,
+        "mfd_display":             0,
+        "_note": "수식이 없는 논문 (공정 논문)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Results", "Conclusion", "Experimental"],
+        "min_h2_count": 5
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{5}",
+          "/u[0-9A-Fa-f]{4}",
+          "/uniFB[0-9a-f]+",
+          "SCIENCE NEWS",
+          "^www\\.advelectronicmat\\.de$",
+          "^© 20\\d{2}"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 6,
+        "_note": "Fig 1-6 각각 캡션 존재 (실측 2026-03-05)"
+      }
+    },
+
+    "Park_2000_ITO_ICP_etch_characteristics": {
+      "display_name": "Park 2000 (J. Vac. Sci. Technol.)",
+      "n_pages": 5,
+
+      "figures": {
+        "expected_count": 3,
+        "_note": "Fig 1-3 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "표 없음"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Experiment", "Results"],
+        "min_h2_count": 3
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 3,
+        "_note": "Fig 1-3 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Kim_2008_ITO_ICP_etch_infinite_selectivity": {
+      "display_name": "Kim 2008 (J. Vac. Sci. Technol.)",
+      "n_pages": 5,
+
+      "figures": {
+        "expected_count": 5,
+        "_note": "Fig 1-5 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "표 없음"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Results", "Conclusion"],
+        "min_h2_count": 4
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 5,
+        "_note": "Fig 1-5 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Waits_2005_Si_MEMS_grayscale_DRIE": {
+      "display_name": "Waits 2005 (J. Microelectromech. Syst.)",
+      "n_pages": 9,
+
+      "figures": {
+        "expected_count": 14,
+        "_note": "Fig 1-14 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 2,
+        "_note": "Table I, II (실측 2026-03-05)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Experimental", "Conclusions"],
+        "min_h2_count": 5
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 14,
+        "_note": "Fig 1-14 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Khazi_2018_cSi_3D_grayscale_RIE": {
+      "display_name": "Khazi 2018 (Microelectron. Eng.)",
+      "n_pages": 12,
+
+      "figures": {
+        "expected_count": 13,
+        "_note": "Fig 1-13 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 2,
+        "_note": "Table 1-2 (실측 2026-03-05)"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Results", "Conclusion"],
+        "min_h2_count": 4
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 13,
+        "_note": "Fig 1-13 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Hazra_2022_hardmask_3D_pattern_transfer": {
+      "display_name": "Hazra 2022 (npj Comput. Mater.)",
+      "n_pages": 35,
+
+      "figures": {
+        "expected_count": 4,
+        "_note": "본문 추출 가능 Fig 1-4 (supplementary 제외, 실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "Docling 추출 시 실제 표 0개 (fake-table 필터 통과 없음, 실측 2026-03-05)"
+      },
+
+      "structure": {
+        "required_headings": ["Methods", "Results", "Conclusion"],
+        "min_h2_count": 4
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 16,
+        "_note": "Fig 1-16 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Dawant_2022_grayscale_EBL_plasma_etch": {
+      "display_name": "Dawant 2022 (J. Vac. Sci. Technol.)",
+      "n_pages": 8,
+
+      "figures": {
+        "expected_count": 8,
+        "_note": "Fig 1-8 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "표 없음"
+      },
+
+      "structure": {
+        "required_headings": ["INTRODUCTION", "CONCLUSION"],
+        "min_h2_count": 5
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 8,
+        "_note": "Fig 1-8 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Schuster_2022_greyscale_lithography_maP1200G": {
+      "display_name": "Schuster 2022 (micro resist technology)",
+      "n_pages": 10,
+
+      "figures": {
+        "expected_count": 16,
+        "_note": "Fig 1-16 (실측 2026-03-05, 기술 보고서/데이터시트 형식)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "표 없음"
+      },
+
+      "structure": {
+        "required_headings": ["Introduction", "Conclusion"],
+        "min_h2_count": 5
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 16,
+        "_note": "Fig 1-16 캡션 (실측 2026-03-05)"
+      }
+    },
+
+    "Christophersen_2015_height_calibration_nanometrology": {
+      "display_name": "Christophersen 2015 (Meas. Sci. Technol.)",
+      "n_pages": 12,
+
+      "figures": {
+        "expected_count": 13,
+        "_note": "Fig 1-13 (실측 2026-03-05)"
+      },
+
+      "tables": {
+        "expected_count": 0,
+        "_note": "표 없음"
+      },
+
+      "structure": {
+        "required_headings": ["INTRODUCTION", "CONCLUSIONS"],
+        "min_h2_count": 3
+      },
+
+      "text_quality": {
+        "forbidden_patterns": [
+          "formula-not-decoded",
+          "/u[0-9A-Fa-f]{4,5}",
+          "/uniFB[0-9a-f]+"
+        ]
+      },
+
+      "captions": {
+        "expected_count": 13,
+        "_note": "Fig 1-13 캡션 (실측 2026-03-05)"
+      }
+    }
+  }
+}

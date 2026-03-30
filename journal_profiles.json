@@ -1,0 +1,167 @@
+{
+  "_comment": "저널 유형별 엔진·후처리 규칙 권장 DB (benchmark_scores.json 결과 기반으로 자동 갱신)",
+  "_version": "1.2",
+  "_updated": "2026-03-12",
+
+  "profiles": {
+
+    "wiley_advanced_science": {
+      "display_name": "Wiley Advanced Science 계열",
+      "description": "Advanced Functional Materials, Advanced Electronic Materials, Advanced Materials 등 Wiley Advanced Science 저널군. 단일 컬럼, 수식 밀도 중간, boilerplate URL 패턴 존재.",
+      "match": {
+        "filename_keywords": ["afm", "adem", "adma", "advfunctmater", "advelectronicmat", "advanced_functional", "advanced_electronic"],
+        "journal_keywords": [
+          "Advanced Functional Materials",
+          "Advanced Electronic Materials",
+          "Advanced Materials",
+          "Adv. Funct. Mater.",
+          "Adv. Electron. Mater.",
+          "Adv. Mater."
+        ],
+        "doi_prefixes": ["10.1002/adfm", "10.1002/adem", "10.1002/adma"]
+      },
+      "layout": {
+        "columns": "single",
+        "heading_style": "title_case",
+        "has_extended_data": false,
+        "boilerplate_patterns": ["www.advancedsciencenews.com", "www.afm-journal.de", "www.advmat.de", "www.advelectronicmat.de"]
+      },
+      "recommended": {
+        "engine": "hybrid_v8",
+        "postprocess_doc_type": "journal_paper",
+        "score": 98.1,
+        "score_v7": 87.42,
+        "evidence_papers": ["A1_Adv_Funct_Mater_2024_Zero_Poisson", "A2_Small_Structures_2025_Depth_Modulus", "A3_Adv_Mater_2025_Transparent_Stretchable", "D1_Adv_Electron_Mater_2024_R2P"],
+        "updated": "2026-03-12"
+      },
+      "known_papers": ["A1_Adv_Funct_Mater_2024_Zero_Poisson", "D1_Adv_Electron_Mater_2024_R2P"]
+    },
+
+    "springer_nature": {
+      "display_name": "Springer Nature 계열",
+      "description": "Nature, Nature Electronics, Nature Materials, Nature Communications 등 Springer Nature 저널군. 단일 컬럼, 수식 밀도 높음, Extended Data 섹션 존재.",
+      "match": {
+        "filename_keywords": ["nature", "natelec", "natmat", "natcomm", "natphys", "natenergy"],
+        "journal_keywords": [
+          "Nature",
+          "Nature Electronics",
+          "Nature Materials",
+          "Nature Communications",
+          "Nature Physics",
+          "Nature Energy",
+          "Nat. Electron.",
+          "Nat. Mater."
+        ],
+        "doi_prefixes": ["10.1038"]
+      },
+      "layout": {
+        "columns": "single",
+        "heading_style": "title_case",
+        "has_extended_data": true,
+        "boilerplate_patterns": ["nature electronics", "nature materials", "nature$", "^Article$", "^Research Article$"]
+      },
+      "recommended": {
+        "engine": "hybrid_v8",
+        "postprocess_doc_type": "journal_paper",
+        "score": 98.1,
+        "score_v7": 87.41,
+        "evidence_papers": ["B1_Nature_Materials_2021_LM", "B2_Science_Advances_2025_LM_patterning", "C1_Nature_Electronics_2024_S-ACF", "C2_Science_Advances_2021_S-ACF_origin"],
+        "updated": "2026-03-12"
+      },
+      "known_papers": ["C1_Nature_Electronics_2024_S-ACF"]
+    },
+
+    "aaas_science": {
+      "display_name": "AAAS Science 계열",
+      "description": "Science, Science Advances, Science Robotics 등 AAAS 저널군. 2단 컬럼, ALL-CAPS 헤딩, display 수식이 inline으로 감지되는 경향.",
+      "match": {
+        "filename_keywords": ["science_adv", "scienceadv", "sciadv", "science_robot"],
+        "journal_keywords": [
+          "Science",
+          "Science Advances",
+          "Science Robotics",
+          "Sci. Adv.",
+          "Sci. Robot."
+        ],
+        "doi_prefixes": ["10.1126"]
+      },
+      "layout": {
+        "columns": "double",
+        "heading_style": "all_caps",
+        "has_extended_data": false,
+        "boilerplate_patterns": ["SCIENCE ADVANCES", "^R E S E A R C H", "^Permissions$", "View the article online"]
+      },
+      "recommended": {
+        "engine": "hybrid_v8",
+        "postprocess_doc_type": "journal_paper",
+        "score": 98.1,
+        "score_v7": null,
+        "evidence_papers": ["C2_Science_Advances_2021_S-ACF_origin", "B2_Science_Advances_2025_LM_patterning"],
+        "updated": "2026-03-12"
+      },
+      "known_papers": ["C2_Science_Advances_2021_S-ACF_origin"]
+    },
+
+    "elsevier": {
+      "display_name": "Elsevier 계열",
+      "description": "Cell, Materials Today, Nano Energy 등 Elsevier 저널군. 2단 컬럼 혼용, 수식 밀도 다양.",
+      "match": {
+        "filename_keywords": ["nano_energy", "mater_today", "cell"],
+        "journal_keywords": [
+          "Cell",
+          "Materials Today",
+          "Nano Energy",
+          "Advanced Energy Materials"
+        ],
+        "doi_prefixes": ["10.1016", "10.1021"]
+      },
+      "layout": {
+        "columns": "mixed",
+        "heading_style": "title_case",
+        "has_extended_data": false,
+        "boilerplate_patterns": []
+      },
+      "recommended": {
+        "engine": "hybrid_v8",
+        "postprocess_doc_type": "journal_paper",
+        "score": null,
+        "evidence_paper": null,
+        "updated": "2026-03-04",
+        "_note": "실측 데이터 없음 — 기본 권장값 (hybrid_v4_speed)"
+      },
+      "known_papers": []
+    },
+
+    "acs": {
+      "display_name": "ACS 계열",
+      "description": "ACS Nano, Nano Letters, ACS Applied Materials & Interfaces 등 American Chemical Society 저널군. 2단 컬럼, 화학 구조식 포함 가능.",
+      "match": {
+        "filename_keywords": ["acsnano", "nanolett", "acsami", "jpcc", "jacs"],
+        "journal_keywords": [
+          "ACS Nano",
+          "Nano Letters",
+          "ACS Applied Materials",
+          "Journal of Physical Chemistry",
+          "JACS"
+        ],
+        "doi_prefixes": ["10.1021"]
+      },
+      "layout": {
+        "columns": "double",
+        "heading_style": "title_case",
+        "has_extended_data": false,
+        "boilerplate_patterns": []
+      },
+      "recommended": {
+        "engine": "hybrid_v8",
+        "postprocess_doc_type": "journal_paper",
+        "score": null,
+        "evidence_paper": null,
+        "updated": "2026-03-04",
+        "_note": "실측 데이터 없음 — 기본 권장값 (hybrid_v4_speed)"
+      },
+      "known_papers": []
+    }
+
+  }
+}
