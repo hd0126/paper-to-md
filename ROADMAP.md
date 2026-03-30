@@ -148,3 +148,49 @@ Obsidian 노트 생성 + 폴더 분류
 | 4 | Analyst Agent (규칙 기반) | 연구 활용 가치 |
 | 5 | orchestrator.py | 위 4개 완성 후 통합 |
 | 6 | Ollama analyst 연동 | 맥북 도착 후 검토 |
+
+---
+
+## 5. 플러그인 배포 구조 (2026-03-31 논의)
+
+### 배경
+paper-to-md를 다른 연구자와 공유하기 위해 Claude Code 플러그인 마켓플레이스 배포 방식 설계.
+honeypot (차백동 박사, https://github.com/hd0126/honeypot) 구조를 참고.
+
+### 채택된 구조
+
+```
+workbench/ (https://github.com/hd0126/workbench)
+├── .claude-plugin/marketplace.json   ← 마켓플레이스 허브
+└── plugins/paper-to-md/
+    ├── .claude-plugin/plugin.json
+    ├── agents/converter.md           ← hybrid v9 실행 에이전트
+    ├── commands/convert.md           ← 오케스트레이터
+    └── skills/pdf-to-md/SKILL.md     ← 저널별 규칙, 체크리스트
+```
+
+### 역할 분리 원칙
+- **코드(Python)**: paper-to-md 레포에서 공개, workbench에는 포함하지 않음
+- **에이전트/스킬**: workbench에서 배포 (honeypot 방식과 동일)
+- **로컬 실행**: 사용자가 paper-to-md 설치 후 플러그인 사용
+
+### agents/commands/skills 역할
+| 파일 | 역할 |
+|------|------|
+| skills/SKILL.md | 도메인 지식 사전 — "이렇게 해야 한다"는 규칙집 |
+| agents/converter.md | 변환 실행 전문 에이전트 — 파이프라인 한 단계 담당 |
+| commands/convert.md | 오케스트레이터 — 에이전트들을 순서대로 호출 |
+
+### 워크플로우
+```
+Obsidian/scripts/ 에서 개발
+    ↓ sync_from_obsidian.bat
+paper-to-md/ → git push (코드 공개)
+    ↓ 기능 완성 시
+workbench/plugins/paper-to-md/ 에이전트/스킬 업데이트 → git push
+```
+
+### 향후 workbench 로드맵
+- v0.2.0: judge + fixer 에이전트 추가 (Judge-Fixer 루프 완성 후)
+- v0.3.0: analyst 에이전트 추가
+- 장기: daeun-cad 플러그인 추가
