@@ -182,7 +182,7 @@ scripts/
     journal_params.json        # 학습된 저널별 파라미터
     regression_baseline.json   # v9.0: 회귀 방지 기준선
   run_paper_hybrid.py          # v9.0: 정규화 위임 + journal_params 연동
-  DEVELOPMENT.md               # 이 문서
+  CHANGELOG.md               # 이 문서
 ```
 
 ## 신규 저널 벤치마크 (2026-03-30)

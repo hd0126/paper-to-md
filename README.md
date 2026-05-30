@@ -36,7 +36,7 @@ paper-to-md/
 ├── benchmark/               # 벤치마크 논문 (A1~F2)
 ├── envs/                    # 가상환경 (symlink → Obsidian/scripts/envs)
 ├── docs/                    # 추가 문서
-├── DEVELOPMENT.md           # 버전 이력 및 벤치마크
+├── CHANGELOG.md           # 버전 이력 및 벤치마크
 └── ROADMAP.md               # 미구현 아이디어 및 장기 설계
 ```
 
@@ -50,7 +50,7 @@ paper-to-md/
 
 ## 개발 이력
 
-→ [DEVELOPMENT.md](DEVELOPMENT.md)
+→ [CHANGELOG.md](CHANGELOG.md)
 
 ## 장기 로드맵
 

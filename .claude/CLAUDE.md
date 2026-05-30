@@ -24,7 +24,7 @@ cd D:\GitHub\Obsidian
 - `engines/postprocess.py` — 후처리 (PUA, 리가처, 워터마크)
 - `engines/text_normalize.py` — 공유 정규화 모듈
 - `learning/` — 자기발전 시스템 Phase 1~4
-- `DEVELOPMENT.md` — 버전 이력, 벤치마크 기록
+- `CHANGELOG.md` — 버전 이력, 벤치마크 기록
 - `ROADMAP.md` — 미구현 아이디어, 장기 설계
 
 ## 알려진 이슈 (v9.1 수정 예정)
